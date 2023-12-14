@@ -1,2 +1,17 @@
-[Anew](https://github.com/tomnomnom/anew)<br>
-[Subfinder](https://github.com/projectdiscovery/subfinder)<br>
+## Ferramentas necessárias
+
+[Subfinder](https://github.com/projectdiscovery/subfinder)
+[Sqlmap](https://github.com/sqlmapproject/sqlmap)
+[Katana](https://github.com/projectdiscovery/katana)
+[Gospider](https://github.com/jaeles-project/gospider)
+[Httpx-ToolKit](https://www.kali.org/tools/httpx-toolkit/))
+[Qsreplace](https://github.com/tomnomnom/qsreplace)
+[Airixss](https://github.com/ferreiraklet/airixss)
+[Uro](https://github.com/s0md3v/uro)
+[Nuclei](https://github.com/projectdiscovery/nuclei)
+[Freq](https://github.com/takshal/freq)
+[Hakrawler](https://github.com/hakluke/hakrawler)
+[Findomain](https://github.com/Edu4rdSHL/findomain)
+[Anew](https://github.com/tomnomnom/anew)
+[WayBackUrls](https://github.com/tomnomnom/waybackurls)
+[gf](https://github.com/tomnomnom/gf)
