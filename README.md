@@ -17,10 +17,17 @@
 [gf](https://github.com/tomnomnom/gf)<br>
 [waybackrobots](https://github.com/vodafon/waybackrobots)<br>
 
+
+###  200HTTP. 
+
+```bash
+subfinder -d $(cat url) | httpx-toolkit -silent -sc -t 1000 | anew 200http
+```
+
 ###  WaybackRobots. 
 
 ```bash
-echo $(cat url) | httpx-toolkit -silent -sc -t 1000 | anew 200http && cat 200http | waybackrobots | anew wayROBOTS
+cat 200http | waybackrobots -d $(cat url) | anew wayROBOTS
 ```
 
 ###  Findomain. 
