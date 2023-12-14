@@ -1,1 +1,2 @@
-https://github.com/tomnomnom/anew)https://github.com/tomnomnom/anew
+[Anew](https://github.com/tomnomnom/anew)<br>
+[Subfinder](https://github.com/projectdiscovery/subfinder)<br>
