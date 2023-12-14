@@ -27,7 +27,7 @@ subfinder -d $(cat url) | httpx-toolkit -silent -sc -t 1000 | anew 200http
 ###  WaybackRobots. 
 
 ```bash
-cat 200http | waybackrobots -d $(cat url) | anew wayROBOTS
+cat 200http | waybackrobots -d $(cat url) -raw | anew wayROBOTS
 ```
 
 ###  Findomain. 
