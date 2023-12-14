@@ -17,6 +17,13 @@ echo
 echo
 echo
 
+echo ========"INICIO WAYBACKROBOTS"========
+echo
+echo $(cat url) | httpx-toolkit -silent -sc -t 1000 | anew 200http && cat 200http | waybackrobots | anew wayROBOTS
+echo
+echo
+echo
+
 echo ========"INICIO FINDOMAIN"========
 echo
 findomain -t $(cat url) -q | httpx-toolkit -silent | anew | waybackurls | gf sqli >> sqli ; sqlmap -m sqli -batch --random-agent --level 1 | anew findomainSQLI;
