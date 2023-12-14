@@ -15,6 +15,13 @@
 [Anew](https://github.com/tomnomnom/anew)<br>
 [WayBackUrls](https://github.com/tomnomnom/waybackurls)<br>
 [gf](https://github.com/tomnomnom/gf)<br>
+[waybackrobots](https://github.com/vodafon/waybackrobots)<br>
+
+###  WaybackRobots. 
+
+```bash
+echo $(cat url) | httpx-toolkit -silent -sc -t 1000 | anew 200http && cat 200http | waybackrobots | anew wayROBOTS
+```
 
 ###  Findomain. 
 
