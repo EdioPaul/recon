@@ -17,9 +17,16 @@ echo
 echo
 echo
 
+echo ========"INICIO 200HTTP"========
+echo
+subfinder -d $(cat url) | httpx-toolkit -silent -sc -t 1000 | anew 200http;
+echo
+echo
+echo
+
 echo ========"INICIO WAYBACKROBOTS"========
 echo
-echo $(cat url) | httpx-toolkit -silent -sc -t 1000 | anew 200http && cat 200http | waybackrobots | anew wayROBOTS;
+cat 200http | waybackrobots -d $(cat url) | anew wayROBOTS;
 echo
 echo
 echo
