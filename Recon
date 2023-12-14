@@ -19,7 +19,7 @@ echo
 
 echo ========"INICIO WAYBACKROBOTS"========
 echo
-echo $(cat url) | httpx-toolkit -silent -sc -t 1000 | anew 200http && cat 200http | waybackrobots | anew wayROBOTS
+echo $(cat url) | httpx-toolkit -silent -sc -t 1000 | anew 200http && cat 200http | waybackrobots | anew wayROBOTS;
 echo
 echo
 echo
