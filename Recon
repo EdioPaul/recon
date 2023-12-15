@@ -75,7 +75,7 @@ echo
 
 echo ================"INIT DALFOX1"================ | anew dalfox1
 echo
-echo $(cat url) | waybackurls | uro | gf xss | dalfox pipe --skipe-bav | anew dalfox1;
+echo $(cat url) | waybackurls | uro | gf xss | dalfox | --skipe-bav | anew dalfox1;
 echo
 echo
 
