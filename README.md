@@ -16,6 +16,8 @@
 [WayBackUrls](https://github.com/tomnomnom/waybackurls)<br>
 [gf](https://github.com/tomnomnom/gf)<br>
 [waybackrobots](https://github.com/vodafon/waybackrobots)<br>
+[Dalfox](https://github.com/hahwul/dalfox)<br>
+[XssTrike](https://github.com/s0md3v/XSStrike)<br>
 
 
 ###  HTTP200. 
@@ -56,6 +58,20 @@ cat subfinder | katana -d 5 -silent -em js,jsp,json | anew KatanaCrawling2;
 
 ```bash
 echo $(cat url) | waybackurls | uro | gf xss | dalfox pipe --skipe-bav | anew dalfox
+
+sudo dalfox url https://testphp.vulnweb.com/listproducts.php?cat=
+
+sudo dalfox url https://testphp.vulnweb.com
+```
+
+###  XssTrike. 
+
+```bash
+sudo python3 xsstrike.py -u http://testphp.vulnweb.com/
+
+sudo python3 xsstrike.py -u http://testphp.vulnweb.com/listproducts.php\?cat\=
+
+sudo python3 xsstrike.py -u http://testphp.vulnweb.com/listproducts.php\?cat\= -f payforce.txt
 ```
 
 
