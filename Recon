@@ -9,6 +9,8 @@ mkdir $folder
 
 cd $folder
 
+rm -rf *
+
 echo "Enter url:"
 read url
 echo $url | anew url;
@@ -115,3 +117,5 @@ echo $(cat url) | subfinder -silent | httpx-toolkit -p 80,443,81,300,591,593,832
 echo
 echo
 echo
+
+cat *
