@@ -58,7 +58,7 @@ cat subfinder | katana -d 5 -silent -em js,jsp,json | anew KatanaCrawling2;
 ###  Dalfox. 
 
 ```bash
-echo $(cat url) | waybackurls | uro | gf xss | dalfox pipe --skipe-bav | anew dalfox
+echo $(cat url) | waybackurls | uro | gf xss | dalfox | --skipe-bav | anew dalfox
 
 sudo dalfox url https://testphp.vulnweb.com/listproducts.php?cat=
 
