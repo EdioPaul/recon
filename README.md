@@ -111,7 +111,7 @@ echo $(cat url) | waybackurls | gf xss | uro | qsreplace '"><img src=x onerror=a
 ###  Xss4. 
 
 ```bash
-gau $(cat url) | httpx-toolkit -silent | qsreplace  '>XSS<' | freq | grep 'XSS' | anew xss4;
+gau $(cat url) | httpx-toolkit -silent | qsreplace '>XSS<' | freq | grep 'XSS' | anew xss4;
 ```
 
 
