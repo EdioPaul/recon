@@ -33,15 +33,22 @@ cat http200 | waybackrobots -d $(cat url) -raw | anew wayROBOTS;
 ###  Sqlmap. 
 
 ```bash
-findomain -t $(cat url) -q | httpx-toolkit -silent | anew | waybackurls | gf sqli >> sqli ; sqlmap -m sqli -batch --random-agent --level 1 | anew Sqlmap;
+findomain -t $(cat url) -q | httpx-toolkit -silent | anew | waybackurls | gf sqli >> sqli ; sqlmap -m sqli -batch --random-agent --level 1 | anew sqlmap;
 ```
+
+###  Subfinder. 
+
+```bash
+subfinder -d $(cat url) -silent -all | httpx-toolkit -silent | anew subfinder;
+```
+
 
 ###  Katana crawling. 
 
 ```bash
-subfinder -d $(cat url) -silent -all | httpx-toolkit -silent | katana -d 5 -silent | grep -iE '\.js'| grep -iEv '(\.jsp|\.json)' | anew KatanaCrawling1;
+cat subfinder | katana -d 5 -silent | grep -iE '\.js'| grep -iEv '(\.jsp|\.json)' | anew KatanaCrawling1;
 
-subfinder -d $(cat url) -silent -all | httpx-toolkit -silent | katana -d 5 -silent -em js,jsp,json | anew KatanaCrawling2;
+cat subfinder | katana -d 5 -silent -em js,jsp,json | anew KatanaCrawling2;
 ```
 
 
