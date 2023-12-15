@@ -95,6 +95,13 @@ echo
 echo
 echo
 
+echo ================"INIT XSS4"================ | anew xss4
+echo
+echo $(cat url) | httpx-toolkit | qsreplace  <h1>XSS</h1> | freq | egrep -v 'Not' | anew xss4;
+echo
+echo
+echo
+
 echo ================"INIT OPENREDIRECT"================ | anew openRedirect
 echo
 echo $(cat url) | waybackurls | httpx-toolkit -silent -timeout 2 -threads 100 | gf redirect | anew openRedirect;
