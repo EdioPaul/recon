@@ -31,23 +31,30 @@ echo
 echo
 echo
 
-echo ================"INIT SQLMAP"================ | anew Sqlmap
+echo ================"INIT SQLMAP"================ | anew sqlmap
 echo
-findomain -t $(cat url) -q | httpx-toolkit -silent | anew | waybackurls | gf sqli >> sqli ; sqlmap -m sqli -batch --random-agent --level 1 | anew Sqlmap;
-echo
-echo
-echo
-
-echo ================"INIT KATANACRAWLING1"================ | anew subfinder1
-echo
-subfinder -d $(cat url) -silent -all | httpx-toolkit -silent | katana -d 5 -silent | grep -iE '\.js'| grep -iEv '(\.jsp|\.json)' | anew KatanaCrawling1;
+findomain -t $(cat url) -q | httpx-toolkit -silent | anew | waybackurls | gf sqli >> sqli ; sqlmap -m sqli -batch --random-agent --level 1 | anew sqlmap;
 echo
 echo
 echo
 
-echo ================"INIT KATANACRAWLING2"================ | anew subfinder2
+echo ================"INIT SUBFINDER"================ | anew subfinder
 echo
-subfinder -d $(cat url) -silent -all | httpx-toolkit -silent | katana -d 5 -silent -em js,jsp,json | anew KatanaCrawling2; 
+subfinder -d $(cat url) -silent -all | httpx-toolkit -silent | anew subfinder;
+echo
+echo
+echo
+
+echo ================"INIT KATANACRAWLING1"================ | anew KatanaCrawling1
+echo
+cat subfinder | katana -d 5 -silent | grep -iE '\.js'| grep -iEv '(\.jsp|\.json)' | anew KatanaCrawling1;
+echo
+echo
+echo
+
+echo ================"INIT KATANACRAWLING2"================ | anew KatanaCrawling2
+echo
+cat subfinder | katana -d 5 -silent -em js,jsp,json | anew KatanaCrawling2; 
 echo
 echo
 echo
