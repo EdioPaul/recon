@@ -46,7 +46,7 @@ findomain -t $(cat url) -q | httpx-toolkit -silent | anew | waybackurls | gf sql
 subfinder -d $(cat url) -silent -all | httpx-toolkit -silent | anew subfinder;
 ```
 
-###  Subfinder. 
+###  Naabu. 
 
 ```bash
 cat subfinder | naabu -list | anew naabu;
