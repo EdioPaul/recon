@@ -18,6 +18,7 @@
 [waybackrobots](https://github.com/vodafon/waybackrobots)<br>
 [Dalfox](https://github.com/hahwul/dalfox)<br>
 [XssTrike](https://github.com/s0md3v/XSStrike)<br>
+[Gau](https://github.com/lc/gau)<br>
 
 
 ###  HTTP200. 
@@ -72,6 +73,12 @@ sudo python3 xsstrike.py -u http://testphp.vulnweb.com/
 sudo python3 xsstrike.py -u http://testphp.vulnweb.com/listproducts.php\?cat\=
 
 sudo python3 xsstrike.py -u http://testphp.vulnweb.com/listproducts.php\?cat\= -f payforce.txt
+```
+
+###  Gau. 
+
+```bash
+gau $(cat url) | grep "\.js" | anew gau
 ```
 
 
