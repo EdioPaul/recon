@@ -97,7 +97,7 @@ echo
 
 echo ================"INIT XSS4"================ | anew xss4
 echo
-echo $(cat url) | httpx-toolkit -silent | qsreplace  <h1>XSS</h1> | freq | egrep -v 'Not' | anew xss4;
+echo $(cat url) | httpx-toolkit -silent | qsreplace  >XSS< | freq | egrep -v 'Not' | anew xss4;
 echo
 echo
 echo
