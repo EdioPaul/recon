@@ -47,13 +47,6 @@ echo
 echo
 echo
 
-echo ================"INIT NAABU"================ | anew naabu
-echo
-cat subfinder | naabu -list | anew naabu;
-echo
-echo
-echo
-
 echo ================"INIT KATANACRAWLING1"================ | anew KatanaCrawling1
 echo
 cat subfinder | katana -d 5 -silent | grep -iE '\.js'| grep -iEv '(\.jsp|\.json)' | anew KatanaCrawling1;
