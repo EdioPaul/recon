@@ -49,6 +49,13 @@ echo
 echo
 echo
 
+echo ================"INIT WHATWEB"================ | anew whatweb
+echo
+whatweb $(cat url) | anew whatweb;
+echo
+echo
+echo
+
 echo ================"INIT SUBFINDER"================ | anew subfinder
 echo
 subfinder -d $(cat url) -silent -all | httpx-toolkit -silent | anew subfinder;
