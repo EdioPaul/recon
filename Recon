@@ -1,5 +1,7 @@
 #/bin/bash
 
+figlet -c Recon do Recon
+
 echo Create folder name:
 read folder
 echo
