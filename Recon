@@ -47,6 +47,19 @@ echo
 echo
 echo
 
+echo ================"INIT SUBZYTAKEOVER"================ | anew subzytakeover
+echo
+subzy run --targets subfinder | anew subzytakeover;
+echo
+echo
+
+echoecho ================"INIT SUBFINDER"================ | anew subfinder
+echo
+subfinder -d $(cat url) -silent -all | httpx-toolkit -silent | anew subfinder;
+echo
+echo
+echo
+
 echo ================"INIT KATANACRAWLING1"================ | anew KatanaCrawling1
 echo
 cat subfinder | katana -d 5 -silent | grep -iE '\.js'| grep -iEv '(\.jsp|\.json)' | anew KatanaCrawling1;
