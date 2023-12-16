@@ -20,6 +20,7 @@
 [XssTrike](https://github.com/s0md3v/XSStrike)<br>
 [Gau](https://github.com/lc/gau)<br>
 [Subzy](https://github.com/PentestPad/subzy)<br>
+[Whatweb](https://www.kali.org/tools/whatweb/)<br>
 
 
 ###  HTTP200. 
@@ -39,6 +40,13 @@ cat http200 | waybackrobots -d $(cat url) -raw | anew wayROBOTS;
 ```bash
 findomain -t $(cat url) -q | httpx-toolkit -silent | anew | waybackurls | gf sqli >> sqli ; sqlmap -m sqli -batch --random-agent --level 1 | anew sqlmap;
 ```
+
+###  Whatweb. 
+
+```bash
+whatweb $(cat url) | anew whatweb;
+```
+
 
 ###  Subfinder. 
 
