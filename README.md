@@ -19,6 +19,7 @@
 [Dalfox](https://github.com/hahwul/dalfox)<br>
 [XssTrike](https://github.com/s0md3v/XSStrike)<br>
 [Gau](https://github.com/lc/gau)<br>
+[Subzy](https://github.com/PentestPad/subzy)<br>
 
 
 ###  HTTP200. 
@@ -43,6 +44,12 @@ findomain -t $(cat url) -q | httpx-toolkit -silent | anew | waybackurls | gf sql
 
 ```bash
 subfinder -d $(cat url) -silent -all | httpx-toolkit -silent | anew subfinder;
+```
+
+###  SubzyTakeOver. 
+
+```bash
+subzy run --targets subfinder | anew subzytakeover;
 ```
 
 
