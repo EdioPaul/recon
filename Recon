@@ -1,6 +1,6 @@
 #/bin/bash
 
-figlet -c Recon do Recon
+figlet -c Recon of Recon
 
 echo Create folder name:
 read folder
@@ -24,6 +24,13 @@ echo
 echo ================"INIT HTTP200"================ | anew http200
 echo
 subfinder -d $(cat url) | httpx-toolkit -silent -sc -t 1000 | anew http200;
+echo
+echo
+echo
+
+echo ================"INIT HTTP404"================ | anew http404
+echo
+cat http200 | egrep 404 | anew http404;
 echo
 echo
 echo
@@ -54,10 +61,12 @@ echo
 subzy run --targets subfinder | anew subzytakeover;
 echo
 echo
-
-echoecho ================"INIT SUBFINDER"================ | anew subfinder
 echo
-subfinder -d $(cat url) -silent -all | httpx-toolkit -silent | anew subfinder;
+
+echo ================"INIT DIG"================ | anew dig
+while IFS= read -r line; do
+    dig "$line" 
+done < "http404" | anew dig
 echo
 echo
 echo
