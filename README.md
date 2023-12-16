@@ -21,6 +21,7 @@
 [Gau](https://github.com/lc/gau)<br>
 [Subzy](https://github.com/PentestPad/subzy)<br>
 [Whatweb](https://www.kali.org/tools/whatweb/)<br>
+[Nikto](https://github.com/sullo/nikto/tree/master)<br>
 
 
 ###  HTTP200. 
@@ -75,6 +76,15 @@ cat subfinder | katana -d 5 -silent -em js,jsp,json | anew KatanaCrawling2;
 ```bash
 sudo dalfox url https://testphp.vulnweb.com/listproducts.php?cat=
 ```
+
+
+###  Dalfox. 
+
+```bash
+cd nikto/program
+./nikto.pl -h http://www.example.com
+```
+
 
 ###  XssTrike. 
 
