@@ -1,4 +1,11 @@
-## Ferramentas necessárias
+## Recon of Recon
+
+## Credits
+
+[OFJAAAH](https://github.com/OFJAAAH)<br>
+[c4ng4c3ir0 ](https://github.com/c4ng4c3ir0)<br>
+
+## Tools
 
 [Subfinder](https://github.com/projectdiscovery/subfinder)<br>
 [Sqlmap](https://github.com/sqlmapproject/sqlmap)<br>
