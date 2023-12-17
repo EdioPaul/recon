@@ -28,7 +28,7 @@ echo
 echo ================"INIT C4NG4R3C0N"================
 echo
 echo
-gau $url | grep "\.js" > salvarjs.txt
+gau $url | grep "\.js" | anew salvarjs.txt > /dev/null
 
 cat salvarjs.txt  | httpx-toolkit -mc 200 -silent  | tee saida.txt
 
@@ -132,7 +132,7 @@ echo
 echo ================"INIT SUBZYTAKEOVER"================ | anew subzytakeover
 echo
 echo
-subzy run --targets subfinder | anew subzytakeover;
+subzy run --targets subfinder | egrep -v 'NOT' | anew subzytakeover;
 echo
 echo
 date
