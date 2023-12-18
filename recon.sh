@@ -129,6 +129,15 @@ echo
 date
 echo
 
+echo ================"INIT SSTI"================ | anew ssti
+echo
+echo
+echo $(cat url) | httpx-toolkit -silent | hakrawler -subs | grep "=" | qsreplace '{{7*7}}' | freq | anew ssti;
+echo
+echo
+date
+echo
+
 echo ================"INIT SUBZYTAKEOVER"================ | anew subzytakeover
 echo
 echo
@@ -143,6 +152,15 @@ echo
 while IFS= read -r line; do
     dig "$line" 
 done < "http404" | anew dig
+echo
+echo
+date
+echo
+
+echo ================"INIT CRTSH"================ | anew crtsh
+echo
+echo
+curl -s "https://crt.sh/?q=$(cat url)&output=json" | jq -r '.[].name_value' | sed 's/\*\.//g' | httpx-toolkit -title -silent | anew crtsh;
 echo
 echo
 date
