@@ -11,8 +11,6 @@ mkdir $folder
 
 cd $folder
 
-rm -rf *
-
 echo "Enter url:"
 read url
 echo $url | anew url;
