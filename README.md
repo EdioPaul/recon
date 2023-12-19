@@ -30,6 +30,7 @@
 [Whatweb](https://www.kali.org/tools/whatweb/)<br>
 [Nikto](https://github.com/sullo/nikto/tree/master)<br>
 [Tplmap](https://github.com/epinna/tplmap)<br>
+[Parabellum](https://github.com/wtechsec/Parabellum-XSS-Scanner/tree/main)<br>
 
 
 ###  HTTP200. 
@@ -90,6 +91,12 @@ cat subfinder | katana -d 5 -silent -em js,jsp,json | anew KatanaCrawling2;
 
 ```bash
 sudo dalfox url https://testphp.vulnweb.com/listproducts.php?cat=
+```
+
+###  Parabellum. 
+
+```bash
+sudo python3 Parabellum-XSS-Scanner.py
 ```
 
 
