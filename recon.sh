@@ -64,6 +64,23 @@ echo
 date
 echo
 
+echo ================"INIT C4NG4CRAWL"================ | anew allurls
+echo
+echo
+subfinder -d $(cat url) | httpx-toolkit -silent -threads 1000 | xargs -I@ sh -c 'findomain -t @ -q | httpx-toolkit -silent | anew | waybackurls | anew allurls';
+cat allurls | gf xss | anew xss;
+cat allurls | gf lfi | anew lfi;
+cat allurls | gf redirect | anew redirect;
+cat allurls | gf rce | anew rce;
+cat allurls | gf ssti | anew ssti;
+cat allurls | gf sqli | anew sqli;
+cat allurls | gf idor | anew idor;
+cat allurls | gf ssrf| anew ssrf;
+echo
+echo
+date
+echo
+
 echo ================"INIT HTTP200"================ | anew http200
 echo
 echo
@@ -94,7 +111,7 @@ echo
 echo ================"INIT SQLMAP"================ | anew sqlmap
 echo
 echo
-findomain -t $(cat url) -q | httpx-toolkit -silent | anew | waybackurls | gf sqli >> sqli ; sqlmap -m sqli -batch --random-agent --level 1 | anew sqlmap;
+findomain -t $(cat url) -q | httpx-toolkit -silent | anew | waybackurls | gf sqli >> sqli2 ; sqlmap -m sqli2 -batch --random-agent --level 1 | anew sqlmap;
 echo
 echo
 date
@@ -127,10 +144,10 @@ echo
 date
 echo
 
-echo ================"INIT SSTI"================ | anew ssti
+echo ================"INIT SSTI"================ | anew ssti2
 echo
 echo
-echo $(cat url) | httpx-toolkit -silent | hakrawler -subs | grep "=" | qsreplace '{{7*7}}' | freq | anew ssti;
+echo $(cat url) | httpx-toolkit -silent | hakrawler -subs | grep "=" | qsreplace '{{7*7}}' | freq | anew ssti2;
 echo
 echo
 date
@@ -223,7 +240,7 @@ echo
 echo ================"INIT XSS4"================ | anew xss4
 echo
 echo
-gau $(cat url) | httpx-toolkit -silent | qsreplace '>XSS<' | freq | grep '>XSS<' | anew xss4;
+gau $(cat url) | httpx-toolkit -silent | gf xss | qsreplace '>XSS<' | freq | grep '>XSS<' | anew xss4;
 echo
 echo
 date

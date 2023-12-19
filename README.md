@@ -33,6 +33,17 @@
 [Parabellum](https://github.com/wtechsec/Parabellum-XSS-Scanner/tree/main)<br>
 
 
+###  Dorks. 
+
+```bash
+inurl:responsible disclosure program
+inurl:vulnerability disclosure program
+inurl:vulnerability program rewards
+inurl:security report vulnerability
+inurl:bugbounty reward program 
+```
+
+
 ###  HTTP200. 
 
 ```bash
