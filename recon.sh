@@ -88,6 +88,42 @@ echo
 date
 echo
 
+echo ================"INIT APACHE SERVER STATUS"================ | anew apacheserverstatus
+echo
+echo
+cat subfinder | httpx-toolkit -path /server-status?full=true -status-code -content-length
+echo
+echo
+date
+echo
+
+echo ================"INIT JBOSS WEB CONSOLE"================ | anew jbosswebconsole
+echo
+echo
+cat subfinder | httpx-toolkit -ports 80,443,8009,8080,8081,8090,8180,8443 -path /web-console/ -status-code -content-length
+echo
+echo
+date
+echo
+
+echo ================"INIT PHP INFO DEBUG PAGE"================ | anew phpinfodebugpage
+echo
+echo
+cat subfinder | httpx-toolkit -path /phpinfo.php -status-code -content-length -title
+echo
+echo
+date
+echo
+
+echo ================"INIT HTTP200"================ | anew http200
+echo
+echo
+cat subfinder | egrep 200 | anew http200;
+echo
+echo
+date
+echo
+
 echo ================"INIT HTTP404"================ | anew http404
 echo
 echo
@@ -155,7 +191,7 @@ echo
 echo ================"INIT C4NG4CRAWL"================ | anew allurls
 echo
 echo
-cat subfinder | xargs -I@ sh -c 'findomain -t @ -q | httpx-toolkit -silent | anew | waybackurls | anew allurls';
+subfinder -d $url | httpx-toolkit -silent -threads 1000 | xargs -I@ sh -c 'findomain -t @ -q | httpx-toolkit -silent | anew | waybackurls | anew allurls';
 
 echo "==============XSS================" | anew xss
 echo
