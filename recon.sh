@@ -86,10 +86,10 @@ echo
 echo
 echo
 
-echo ================"INIT SSTI"================ | anew ssti2
+echo ================"INIT SSTI"================ | anew ssti
 echo
 echo
-echo $(cat url) | httpx-toolkit -silent | hakrawler -subs | grep "=" | qsreplace '{{7*7}}' | freq | anew ssti2;
+echo $(cat url) | httpx-toolkit -silent | hakrawler -subs | grep "=" | qsreplace '{{7*7}}' | freq | egrep -v 'Not' | anew ssti;
 echo
 echo
 echo
