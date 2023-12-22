@@ -32,6 +32,7 @@
 [Tplmap](https://github.com/epinna/tplmap)<br>
 [Parabellum](https://github.com/wtechsec/Parabellum-XSS-Scanner/tree/main)<br>
 [FFUF](https://github.com/ffuf/ffuf)<br>
+[Dirsearch](https://github.com/maurosoria/dirsearch)<br>
 
 
 ###  Dorks. 
@@ -149,6 +150,12 @@ sudo python3 xsstrike.py -u http://testphp.vulnweb.com/
 sudo python3 xsstrike.py -u http://testphp.vulnweb.com/listproducts.php\?cat\=
 
 sudo python3 xsstrike.py -u http://testphp.vulnweb.com/listproducts.php\?cat\= -f payforce.txt
+```
+
+### Dirsearch.
+
+```bash
+sudo python3 dirsearch -u https://target.com -e * | anew dirsearch;
 ```
 
 ###  Gau. 

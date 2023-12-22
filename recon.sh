@@ -109,6 +109,14 @@ echo
 echo
 echo
 
+echo ================"INIT NIKTO"================ | anew nikto
+echo
+echo
+/home/edio/nikto/program/ ./nikto.pl -h $(cat url) | anew nikto;
+echo
+echo
+echo
+
 echo ================"INIT CRTSH"================ | anew crtsh
 echo
 echo
@@ -141,11 +149,18 @@ echo
 echo
 echo
 
+echo ================"INIT DIRSEARCH"================ | anew dirsearch
+echo
+echo
+python3 /home/edio/dirsearch/dirsearch.py -u $url | anew dirsearch;
+echo
+echo
+echo
 
 echo ================"INIT FFUF"================ | anew ffuf
 echo
 echo
-ffuf -w /usr/share/wordlists/wfuzz/general/big.txt -u https://$url/FUZZ -mc all -c -v | anew ffuf;
+ffuf -w /usr/share/wordlists/wfuzz/general/big.txt -u https://$url/FUZZ | anew ffuf;
 echo
 echo
 echo
@@ -161,7 +176,7 @@ echo
 echo ================"INIT XSSTRIKE"================ | anew xsstrike
 echo
 echo
-python3 ../xsstrike.py -u $url | anew xsstrike;
+python3 /home/edio/XSStrike/xsstrike.py -u $url | anew xsstrike;
 echo
 echo
 echo
