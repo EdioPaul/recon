@@ -112,7 +112,7 @@ echo
 echo ================"INIT NIKTO"================ | anew nikto
 echo
 echo
-/home/edio/nikto/program/ ./nikto.pl -h $(cat url) | anew nikto;
+/home/edio/nikto/program/./nikto.pl -h $(cat url) | anew nikto;
 echo
 echo
 echo
@@ -152,7 +152,7 @@ echo
 echo ================"INIT DIRSEARCH"================ | anew dirsearch
 echo
 echo
-python3 /home/edio/dirsearch/dirsearch.py -u $url | anew dirsearch;
+python3 /home/edio/dirsearch/dirsearch.py -u $url -e * | anew dirsearch;
 echo
 echo
 echo
