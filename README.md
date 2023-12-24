@@ -155,7 +155,7 @@ sudo python3 xsstrike.py -u http://testphp.vulnweb.com/listproducts.php\?cat\= -
 ### Dirsearch.
 
 ```bash
-sudo python3 dirsearch -u https://target.com -e * | anew dirsearch;
+sudo python3 dirsearch -u https://target.com | anew dirsearch;
 ```
 
 ###  Gau. 
