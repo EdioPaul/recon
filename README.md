@@ -33,6 +33,8 @@
 [Parabellum](https://github.com/wtechsec/Parabellum-XSS-Scanner/tree/main)<br>
 [FFUF](https://github.com/ffuf/ffuf)<br>
 [Dirsearch](https://github.com/maurosoria/dirsearch)<br>
+[FuzzingTemplates](https://github.com/projectdiscovery/fuzzing-templates/tree/main)<br>
+[Byp4xx](https://github.com/Rizsyad/byp4xx)<br>
 
 
 ###  Dorks. 
@@ -141,6 +143,12 @@ python2.7 ./tplmap.py -u "<http://192.168.56.101:3000/ti?user=InjectHere*&commen
 curl -s "https://crt.sh/?q=$(cat url)&output=json" | jq -r '.[].name_value' | sed 's/\*\.//g' | httpx-toolkit -title -silent | anew crtsh;
 ```
 
+###  BYP4XX. 
+
+```bash
+python3 /home/edio/byp4xx/byp4xx.py --url https://$(cat url) --dir secret --all | anew byp4xx;
+```
+
 
 ###  XssTrike. 
 
@@ -152,11 +160,18 @@ sudo python3 xsstrike.py -u http://testphp.vulnweb.com/listproducts.php\?cat\=
 sudo python3 xsstrike.py -u http://testphp.vulnweb.com/listproducts.php\?cat\= -f payforce.txt
 ```
 
+### FuzzingTemplates.
+
+```bash
+nuclei -t fuzzing-templates -list allurls | anew fuzzingtemplates;
+```
+
 ### Dirsearch.
 
 ```bash
 sudo python3 dirsearch -u https://target.com | anew dirsearch;
 ```
+
 
 ###  Gau. 
 

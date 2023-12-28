@@ -9,6 +9,15 @@ echo
 echo
 echo
 
+echo ================"INIT FUZZINGTEMPLATES"================ | anew fuzzingtemplates
+echo
+echo
+subfinder -d $(cat url) -silent | httpx-toolkit -silent | katana -d 5 -silent | anew paramsallurls;
+nuclei -t /home/edio/fuzzing-templates -list paramsallurls | anew fuzzingtemplates;
+echo
+echo
+echo
+
 echo ================"INIT DIRSEARCH"================
 echo
 echo
@@ -37,6 +46,42 @@ echo ================"INIT XSSTRIKE"================ | anew xsstrike
 echo
 echo
 python3 /home/edio/XSStrike/xsstrike.py -u $(cat url) | anew xsstrike;
+echo
+echo
+echo
+
+echo ================"INIT BYP4XXHEADER"================ | anew byp4xxheader
+echo
+echo
+python3 /home/edio/byp4xx/byp4xx.py --url https://$(cat url) --dir secret --header | anew byp4xxheader;
+echo
+echo
+
+echo ================"INIT BYP4XXPROTOCOL"================ | anew byp4xxprotocol
+echo
+echo
+python3 /home/edio/byp4xx/byp4xx.py --url https://$(cat url) --dir secret --protocol | anew byp4xxprotocol;
+echo
+echo
+
+echo ================"INIT BYP4XXPORT"================ | anew byp4xxport
+echo
+echo
+python3 /home/edio/byp4xx/byp4xx.py --url https://$(cat url) --dir secret --port | anew byp4xxport;
+echo
+echo
+
+echo ================"INIT BYP4XXMETHOD"================ | anew byp4xxmethod
+echo
+echo
+python3 /home/edio/byp4xx/byp4xx.py --url https://$(cat url) --dir secret --method | anew byp4xxmethod;
+echo
+echo
+
+echo ================"INIT BYP4XXENCODE"================ | anew byp4xxencode
+echo
+echo
+python3 /home/edio/byp4xx/byp4xx.py --url https://$(cat url) --dir secret --encode | anew byp4xxencode;
 echo
 echo
 echo
