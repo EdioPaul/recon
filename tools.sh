@@ -4,7 +4,11 @@ figlet -c Tools
 
 echo Insert URL:
 read url
+echo
+echo
+mkdir $url
 cd $url
+echo $url | anew url;
 echo
 echo
 echo

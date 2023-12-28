@@ -146,7 +146,12 @@ curl -s "https://crt.sh/?q=$(cat url)&output=json" | jq -r '.[].name_value' | se
 ###  BYP4XX. 
 
 ```bash
-python3 /home/edio/byp4xx/byp4xx.py --url https://$(cat url) --dir secret --all | anew byp4xx;
+python3 byp4xx.py --url https://$(cat url) --dir secret --header | anew byp4xxheader;
+python3 byp4xx.py --url https://$(cat url) --dir secret --protocol | anew byp4xxprotocol;
+python3 byp4xx.py --url https://$(cat url) --dir secret --port | anew byp4xxport;
+python3 byp4xx.py --url https://$(cat url) --dir secret --method | anew byp4xxmethod;
+python3 byp4xx.py --url https://$(cat url) --dir secret --encode | anew byp4xxencode;
+python3 byp4xx.py --url https://$(cat url) --dir secret --all | anew byp4xxall;
 ```
 
 
