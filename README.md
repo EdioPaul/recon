@@ -35,6 +35,7 @@
 [Dirsearch](https://github.com/maurosoria/dirsearch)<br>
 [FuzzingTemplates](https://github.com/projectdiscovery/fuzzing-templates/tree/main)<br>
 [Byp4xx](https://github.com/Rizsyad/byp4xx)<br>
+[Assetfinder](https://github.com/tomnomnom/assetfinder)<br>
 
 
 ###  Dorks. 
