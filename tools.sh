@@ -34,7 +34,7 @@ echo
 echo ================"INIT FFUF"================ | anew ffuf
 echo
 echo
-ffuf -w /home/edio/SecLists/Fuzzing/fuzz-Bo0oM.txt -u https://$url/FUZZ | anew ffuf;
+ffuf -w /home/edio/SecLists/Fuzzing/fuzz-Bo0oM.txt -u https://$url/FUZZ | grep 200 | anew ffuf;
 echo
 echo
 echo
