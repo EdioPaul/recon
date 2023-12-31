@@ -13,10 +13,11 @@ echo
 echo
 echo
 
+
 echo ================"INIT C4NG4R3C0N"================
 echo
 echo
-gau $(cat url) | grep "\.js" | httpx-toolkit -mc 200 -silent  | tee saida.txt
+gau $(cat url) | grep "\.js" | /home/edio/go/bin/./httpx -mc 200 -silent  | anew saida.txt
 xargs -a saida.txt -n2 -I{} bash -c "echo -e '\n[URL]: {}\n'; python3 /linkfinder.py -i {} -o cli" | python3 /collector.py output;
 echo
 echo
@@ -24,7 +25,7 @@ echo
 echo ================"INIT C4NG4CRAWL"================ | anew allurls
 echo
 echo
-subfinder -d $(cat url) | httpx-toolkit -silent -threads 1000 | xargs -I@ sh -c 'findomain -t @ -q | httpx-toolkit -silent | anew | waybackurls | anew allurls';
+subfinder -d $(cat url) | /home/edio/go/bin/./httpx -silent -threads 1000 | xargs -I@ sh -c 'findomain -t @ -q | /home/edio/go/bin/./httpx -silent | anew | waybackurls | anew allurls';
 echo
 echo ================"INIT XSS"================ | anew xss
 echo
@@ -63,7 +64,7 @@ echo
 echo ================"INIT SUBFINDER"================ | anew subfinder
 echo
 echo
-subfinder -d $(cat url) -silent -all | httpx-toolkit -silent -sc -t 1000 | anew subfinder;
+subfinder -d $(cat url) -silent -all | /home/edio/go/bin/./httpx -silent -sc -t 1000 | anew subfinder;
 echo
 echo
 echo
@@ -120,7 +121,7 @@ echo
 echo ================"INIT CRTSH"================ | anew crtsh
 echo
 echo
-curl -s "https://crt.sh/?q=$(cat url)&output=json" | jq -r '.[].name_value' | sed 's/\*\.//g' | httpx-toolkit -title -silent | anew crtsh;
+curl -s "https://crt.sh/?q=$(cat url)&output=json" | jq -r '.[].name_value' | sed 's/\*\.//g' | /home/edio/go/bin/./httpx -title -silent | anew crtsh;
 echo
 echo
 echo
@@ -128,7 +129,7 @@ echo
 echo ================"INIT /.git/HEAD1"================ | anew gitHEAD1
 echo
 echo
-curl -s "https://crt.sh/?q=$(cat url)&output=json" | jq -r '.[].name_value' | assetfinder -subs-only | sed 's#$#/.git/HEAD#g' | httpx-toolkit -silent -content-length -status-code 301,302 -timeout 3 -retries 0 -ports 80,8080,443 -threads 500 -title | anew gitHEAD1
+curl -s "https://crt.sh/?q=$(cat url)&output=json" | jq -r '.[].name_value' | assetfinder -subs-only | sed 's#$#/.git/HEAD#g' | /home/edio/go/bin/./httpx -silent -content-length -status-code 301,302 -timeout 3 -retries 0 -ports 80,8080,443 -threads 500 -title | anew gitHEAD1
 echo
 echo
 echo
@@ -136,7 +137,7 @@ echo
 echo ================"INIT /.git/HEAD2"================ | anew gitHEAD2
 echo
 echo
-curl -s "https://crt.sh/?q=$(cat url)&output=json" | jq -r '.[].name_value' | assetfinder -subs-only | httpx-toolkit -silent -path /.git/HEAD -content-length -status-code 301,302 -timeout 3 -retries 0 -ports 80,8080,443 -threads 500 -title | anew gitHEAD2;
+curl -s "https://crt.sh/?q=$(cat url)&output=json" | jq -r '.[].name_value' | assetfinder -subs-only | /home/edio/go/bin/./httpx -silent -path /.git/HEAD -content-length -status-code 301,302 -timeout 3 -retries 0 -ports 80,8080,443 -threads 500 -title | anew gitHEAD2;
 echo
 echo
 echo
