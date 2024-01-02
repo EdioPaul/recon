@@ -97,7 +97,7 @@ echo
 echo ================"INIT SUBZYTAKEOVER"================ | anew subzytakeover
 echo
 echo
-subzy run --targets subfinder | egrep -v 'NOT' | anew subzytakeover;
+subzy run --targets subfinder | egrep -v 'NOT' | egrep -v 'HTTP ERROR' | anew subzytakeover;
 echo
 echo
 echo
@@ -137,7 +137,7 @@ echo
 echo ================"INIT /.git/HEAD1"================ | anew gitHEAD1
 echo
 echo
-curl -s "https://crt.sh/?q=$(cat url)&output=json" | jq -r '.[].name_value' | assetfinder -subs-only | sed 's#$#/.git/HEAD#g' | /home/edio/go/bin/./httpx -silent -content-length -status-code 301,302 -timeout 3 -retries 0 -ports 80,8080,443 -threads 500 -title | anew gitHEAD1
+curl -s "https://crt.sh/?q=$(cat url)&output=json" | jq -r '.[].name_value' | assetfinder -subs-only | sed 's#$#/.git/HEAD#g' | /home/edio/go/bin/./httpx -silent -content-length -status-code 301,302 -timeout 3 -retries 0 -ports 80,8080,443 -threads 500 -title | grep 200 | anew gitHEAD1
 echo
 echo
 echo
@@ -145,7 +145,7 @@ echo
 echo ================"INIT /.git/HEAD2"================ | anew gitHEAD2
 echo
 echo
-curl -s "https://crt.sh/?q=$(cat url)&output=json" | jq -r '.[].name_value' | assetfinder -subs-only | /home/edio/go/bin/./httpx -silent -path /.git/HEAD -content-length -status-code 301,302 -timeout 3 -retries 0 -ports 80,8080,443 -threads 500 -title | anew gitHEAD2;
+curl -s "https://crt.sh/?q=$(cat url)&output=json" | jq -r '.[].name_value' | assetfinder -subs-only | /home/edio/go/bin/./httpx -silent -path /.git/HEAD -content-length -status-code 301,302 -timeout 3 -retries 0 -ports 80,8080,443 -threads 500 -title | grep 200 | anew gitHEAD2;
 echo
 echo
 echo
