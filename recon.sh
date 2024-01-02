@@ -102,6 +102,14 @@ echo
 echo
 echo
 
+echo ================"INIT CORSORIGIN"================ | anew corsorigin
+echo
+echo
+assetfinder $(cat url) | /home/edio/go/bin/./httpx -threads 300 -follow-redirects -silent | /home/edio/go/bin/./rush -j200 'curl -m5 -s -I -H "Origin: evil.com" {} | [[ $(grep -c "evil.com") -gt 0 ]] && printf "\n3[0;32m[VUL TO CORS] 3[0m{}"' 2>/dev/null | anew corsorigin
+echo
+echo
+echo
+
 echo ================"INIT WAYBACKROBOTS"================ | anew wayROBOTS
 echo
 echo
