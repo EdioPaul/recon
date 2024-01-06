@@ -36,6 +36,9 @@
 [FuzzingTemplates](https://github.com/projectdiscovery/fuzzing-templates/tree/main)<br>
 [Byp4xx](https://github.com/Rizsyad/byp4xx)<br>
 [Assetfinder](https://github.com/tomnomnom/assetfinder)<br>
+[Hakcheckurl](https://github.com/hakluke/hakcheckurl)<br>
+[Mantra](https://github.com/MrEmpy/mantra)<br>
+[JSScanner](https://github.com/0x240x23elu/JSScanner)<br>
 
 
 ###  Dorks. 
