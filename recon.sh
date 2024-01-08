@@ -8,13 +8,13 @@ mkdir $url
 cd $url
 echo $url | anew url;
 
-gau $(cat url) | /home/edio/go/bin/./httpx -mc 200 -silent  | anew gau;
-
-echo $(cat url) | /home/edio/go/bin/./httpx -silent | katana -d 10 -silent | anew katana;
-
 echo $(cat url) | waybackurls | anew waybackurls;
 
+gau $(cat url) | /home/edio/go/bin/./httpx -mc 200 -silent  | anew gau;
+
 echo $(cat url) | /home/edio/go/bin/./httpx -silent | hakrawler -subs | anew hakrawler;
+
+echo $(cat url) | /home/edio/go/bin/./httpx -silent | katana -d 10 -silent | anew katana;
 
 subfinder -d $(cat url) -silent -all | /home/edio/go/bin/./httpx -silent -sc -t 1000 | anew subfinder;
 
@@ -23,24 +23,29 @@ subfinder -d $(cat url)   | /home/edio/go/bin/./httpx -silent -threads 1000 | xa
 cat gau katana waybackurls hakrawler findomain | anew allurls;
 
 cat allurls | gf xss      | anew xss;
-cat allurls | gf lfi      | anew lfi;
+cat allurls | gf lfi      | anew lfi;  
 cat allurls | gf rce      | anew rce;
-cat allurls | gf sqli     | anew sqli;
-cat allurls | gf idor     | anew idor;
+cat allurls | gf sqli     | anew sqli; 
+cat allurls | gf idor     | anew idor; 
 cat allurls | gf ssrf     | anew ssrf;
-cat allurls | gf ssti     | anew ssti;
+cat allurls | gf ssti     | anew ssti; 
 cat allurls | gf redirect | anew redirect;
 
 cat allurls | grep -E '\.(js|txt)$' | anew js;
 
-cp js /home/edio/JSScanner;
+cd js /home/edio/JSScanner;
 
-xargs -a js -n2 -I{} bash -c "echo -e '\n[URL]: {}\n'; python3 /linkfinder.py -i {} -o cli" | python3 /collector.py output
+cat js | mantra | anew mantra;
+
+cat allurls | html-tool comments | grep -oE '\b(https?|http)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]*[-A-Za-z0-9+&@#/%=~_|]' | anew htmlComents;
+
+xargs -a js -n2 -I{} bash -c "echo -e '\n[URL]: {}\n'; python3 /linkfinder.py -i {} -o cli" | python3 /collector.py output;
 
 cat subfinder | grep 200 | anew http200;
 cat subfinder | grep 404 | anew http404;
-while IFS= read -r line; do
-    dig "$line" 
+
+while IFS= read -r line;
+    do dig "$line"
 done < "http404" | anew dig;
 
 subzy run --targets subfinder | anew takeover;
@@ -51,9 +56,8 @@ cat subfinder | waybackrobots -d $(cat url) -raw | anew wayROBOTS;
 
 /home/edio/nikto/program/./nikto.pl -h $(cat url) | anew nikto;
 
-curl -s "https://crt.sh/?q=$(cat url)&output=json" | jq -r '.[].name_value' | sed 's/\*\.//g' | anew crtsh;
-
-curl -s "https://crt.sh/?q=$(cat url)&output=json" | jq -r '.[].name_value' | assetfinder -subs-only | sed 's#$#/.git/HEAD#g' | anew gitHEAD;
+curl -s "https://crt.sh/?q=$(cat url)&output=json" | jq -r '.[].name_value' | sed 's/\*\.//g'        | httpx -title -silent   | anew crtsh;
+curl -s "https://crt.sh/?q=$(cat url)&output=json" | jq -r '.[].name_value' | assetfinder -subs-only | sed 's#$#/.git/HEAD#g' | httpx -silent -content-length -status-code 301,302 -timeout 3 -retries 0 -ports 80,8080,443 -threads 500 -title | anew gitHEADtemp; cat gitHEADtemp | grep 200 | anew gitHEAD;
 
 whatweb $(cat url) | anew whatweb;
 
@@ -64,6 +68,8 @@ python3 /home/edio/dirsearch/dirsearch.py -u $(cat url);
 ffuf -w /home/edio/SecLists/Fuzzing/fuzz-Bo0oM.txt -u https://$url/FUZZ | anew ffuftemp; cat ffuftemp | grep 200 | anew ffuf;
 
 python3 /home/edio/XSStrike/xsstrike.py -u $(cat url) | anew xsstrike;
+
+cat allurls |  dalfox pipe | anew dalfox;
 
 python3 /home/edio/byp4xx/byp4xx.py --url https://$(cat url) --dir secret --port     | anew porttemp;     cat porttemp     | grep 200 | anew port;
 python3 /home/edio/byp4xx/byp4xx.py --url https://$(cat url) --dir secret --header   | anew headertemp;   cat headertemp   | grep 200 | anew header;
