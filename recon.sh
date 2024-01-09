@@ -20,7 +20,7 @@ subfinder -d $(cat url) -silent -all | /home/edio/go/bin/./httpx -silent -sc -t 
 
 subfinder -d $(cat url)   | /home/edio/go/bin/./httpx -silent -threads 1000 | xargs -I@ sh -c 'findomain -t @ -q | /home/edio/go/bin/./httpx -silent | anew | waybackurls | anew findomain';
 
-cat gau katana waybackurls hakrawler findomain | anew allurls;
+cat waybackurls gau hakrawler katana findomain | anew allurls;
 
 cat allurls | gf xss      | anew xss;
 cat allurls | gf lfi      | anew lfi;  
@@ -56,8 +56,8 @@ cat subfinder | waybackrobots -d $(cat url) -raw | anew wayROBOTS;
 
 /home/edio/nikto/program/./nikto.pl -h $(cat url) | anew nikto;
 
-curl -s "https://crt.sh/?q=$(cat url)&output=json" | jq -r '.[].name_value' | sed 's/\*\.//g'        | httpx -title -silent   | anew crtsh;
-curl -s "https://crt.sh/?q=$(cat url)&output=json" | jq -r '.[].name_value' | assetfinder -subs-only | sed 's#$#/.git/HEAD#g' | httpx -silent -content-length -status-code 301,302 -timeout 3 -retries 0 -ports 80,8080,443 -threads 500 -title | anew gitHEADtemp; cat gitHEADtemp | grep 200 | anew gitHEAD;
+curl -s "https://crt.sh/?q=$(cat url)&output=json" | jq -r '.[].name_value' | sed 's/\*\.//g'                                 | /home/edio/go/bin/./httpx -title -silent   | anew crtsh;
+curl -s "https://crt.sh/?q=$(cat url)&output=json" | jq -r '.[].name_value' | assetfinder -subs-only | sed 's#$#/.git/HEAD#g' | /home/edio/go/bin/./httpx -silent -content-length -status-code 301,302 -timeout 3 -retries 0 -ports 80,8080,443 -threads 500 -title | anew gitHEADtemp; cat gitHEADtemp | grep 200 | anew gitHEAD;
 
 whatweb $(cat url) | anew whatweb;
 
