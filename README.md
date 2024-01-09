@@ -22,6 +22,7 @@
 [Anew](https://github.com/tomnomnom/anew)<br>
 [WayBackUrls](https://github.com/tomnomnom/waybackurls)<br>
 [gf](https://github.com/tomnomnom/gf)<br>
+[GF-Patterns](https://github.com/1ndianl33t/Gf-Patterns/blob/master/xss.json)<br>
 [waybackrobots](https://github.com/vodafon/waybackrobots)<br>
 [Dalfox](https://github.com/hahwul/dalfox)<br>
 [XssTrike](https://github.com/s0md3v/XSStrike)<br>
